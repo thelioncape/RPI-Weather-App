@@ -14,7 +14,7 @@ Any lines after that will be ignored
 Run the following commands on your Pi
 
 ```
-sudo apt-get install git python-pip
+sudo apt-get install -y git python-pip
 sudo pip install requests
 ```
 
