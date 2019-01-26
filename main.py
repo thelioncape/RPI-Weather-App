@@ -33,7 +33,7 @@ def get_weather():
 
     requesturl = url + "id=" + id + "&APPID=" + appid
     try:
-        response = requests.get(requesturl).json
+        response = requests.get(requesturl).text
     except Exception as e:
         print(e)
         input("Press enter to exit")
