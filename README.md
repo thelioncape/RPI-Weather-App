@@ -23,10 +23,10 @@ With GPIO pins facing upward and on the right:
 ```
                   1   2
                   3   4
-North-West LED  - 5   6   - Ground for LEDs
+ North-West LED - 5   6   - Ground for LEDs
                   7   8
- Ground for VU  - 9   10  - North LED
-    Out for VU  - 11  12  - North-East LED
+  Ground for VU - 9   10  - North LED
+ North-East LED - 11  12  - Out for VU
                   13	14
                   15	16  - East LED
                   17	18  - South-East LED
