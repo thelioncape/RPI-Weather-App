@@ -28,10 +28,10 @@ def get_weather():
     with open("data.txt", 'r') as f:
         datafile = f.readlines()
 
-    appid = datafile[0]  # API Key
-    id = datafile[1]  # City ID
+    appid = datafile[0].rstrip()  # API Key
+    cityid = datafile[1].rstrip()  # City ID
 
-    requesturl = url + "id=" + id + "&APPID=" + appid
+    requesturl = url + "id=" + cityid + "&APPID=" + appid
     try:
         response = requests.get(requesturl).text
     except Exception as e:
