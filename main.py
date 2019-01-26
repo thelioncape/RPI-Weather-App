@@ -63,7 +63,7 @@ def set_wind_direction(direction):
     GPIO.output(22, GPIO.LOW)  # South
     GPIO.output(24, GPIO.LOW)  # South-West
     GPIO.output(26, GPIO.LOW)  # West
-    GPIO.output(28, GPIO.LOW)  # North-West
+    GPIO.output(5, GPIO.LOW)  # North-West
     if direction == 0:
         GPIO.output(10, GPIO.HIGH)
     elif direction == 1:
@@ -79,7 +79,7 @@ def set_wind_direction(direction):
     elif direction == 6:
         GPIO.output(26, GPIO.HIGH)
     elif direction == 7:
-        GPIO.output(28, GPIO.HIGH)
+        GPIO.output(5, GPIO.HIGH)
 
 
 def set_wind_speed(speed):
@@ -88,9 +88,9 @@ def set_wind_speed(speed):
     ontime = (speed / 100) * 0.01
     offtime = 0.01 - ontime
     for i in range(5000):
-        GPIO.output(32, GPIO.HIGH)
+        GPIO.output(11, GPIO.HIGH)
         sleep(ontime)
-        GPIO.output(32, GPIO.LOW)
+        GPIO.output(11, GPIO.LOW)
         sleep(offtime)
 
 setup_pins()
