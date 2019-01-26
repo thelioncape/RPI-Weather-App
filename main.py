@@ -8,18 +8,19 @@ url = "http://api.openweathermap.org/data/2.5/weather?"
 
 def setup_pins():
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(10, GPIO.OUT) # North LED
-    GPIO.setup(12, GPIO.OUT) # North-East LED
-    GPIO.setup(16, GPIO.OUT) # East LED
-    GPIO.setup(18, GPIO.OUT) # South-East LED
-    GPIO.setup(22, GPIO.OUT) # South LED
-    GPIO.setup(24, GPIO.OUT) # South-West LED
-    GPIO.setup(26, GPIO.OUT) # West LED
-    GPIO.setup(28, GPIO.OUT) # North-West LED
+    GPIO.setup(10, GPIO.OUT)  # North LED
+    GPIO.setup(12, GPIO.OUT)  # North-East LED
+    GPIO.setup(16, GPIO.OUT)  # East LED
+    GPIO.setup(18, GPIO.OUT)  # South-East LED
+    GPIO.setup(22, GPIO.OUT)  # South LED
+    GPIO.setup(24, GPIO.OUT)  # South-West LED
+    GPIO.setup(26, GPIO.OUT)  # West LED
+    GPIO.setup(28, GPIO.OUT)  # North-West LED
 
 
 def round_to_compass_point(number):
-    # Take degrees, devide by 45 and ronud to find direction in number (0 as north)
+    # Take degrees, devide by 45 and ronud to find direction in number
+    # 0 is North and clockwise until 7 is North-West
     return round(int(number) / 45)
 
 
@@ -96,4 +97,3 @@ while True:
     wind = get_wind()
     set_wind_direction(wind[1])
     set_wind_speed(wind[0])
-
