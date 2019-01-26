@@ -1,5 +1,24 @@
 import urllib.request
 import json
+import RPi.GPIO as GPIO
+
+
+
+def round_to_compass_point(number):
+    return round(int(number) / 45)
+
+"""
+
+0: North
+1: North-East
+2: East
+3: South-East
+4: South
+5: South-West
+6: West
+7: North-West
+
+"""
 
 url = "http://api.openweathermap.org/data/2.5/weather?"
 
@@ -16,7 +35,10 @@ except Exception as e:
     print(e)
     input("Press enter to exit")
     exit()
-data = response.read()
-text = data.decode('utf-8')
 
-print(text)
+weather = json.load(response)
+
+wind_speed = weather['wind']['speed']
+wind_direction = round_to_compass_point(weather['wind']['deg'])
+
+
