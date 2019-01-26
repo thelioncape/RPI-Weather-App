@@ -13,6 +13,7 @@ Any lines after that will be ignored
 
 With GPIO pins facing upward and on the right:
 
+```
 1	2
 3	4
 5	6 - Ground for LEDs
@@ -33,3 +34,4 @@ With GPIO pins facing upward and on the right:
 35	36
 37	38
 39	40
+```
