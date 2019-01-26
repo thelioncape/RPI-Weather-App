@@ -9,14 +9,14 @@ url = "http://api.openweathermap.org/data/2.5/weather?"
 def setup_pins():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(10, GPIO.OUT)  # North LED
-    GPIO.setup(12, GPIO.OUT)  # North-East LED
+    GPIO.setup(11, GPIO.OUT)  # North-East LED
     GPIO.setup(16, GPIO.OUT)  # East LED
     GPIO.setup(18, GPIO.OUT)  # South-East LED
     GPIO.setup(22, GPIO.OUT)  # South LED
     GPIO.setup(24, GPIO.OUT)  # South-West LED
     GPIO.setup(26, GPIO.OUT)  # West LED
     GPIO.setup(5, GPIO.OUT)   # North-West LED
-    GPIO.setup(11, GPIO.OUT)  # VU Out
+    GPIO.setup(12, GPIO.OUT)  # VU Out
 
 
 def round_to_compass_point(number):
@@ -58,45 +58,37 @@ def get_wind():
 
 def set_wind_direction(direction):
     GPIO.output(10, GPIO.LOW)  # North
-    GPIO.output(12, GPIO.LOW)  # North-East
+    GPIO.output(11, GPIO.LOW)  # North-East
     GPIO.output(16, GPIO.LOW)  # East
     GPIO.output(18, GPIO.LOW)  # South-East
     GPIO.output(22, GPIO.LOW)  # South
     GPIO.output(24, GPIO.LOW)  # South-West
     GPIO.output(26, GPIO.LOW)  # West
     GPIO.output(5, GPIO.LOW)  # North-West
-    if direction == 0:
+    if direction == 0:  # North
         GPIO.output(10, GPIO.HIGH)
-    elif direction == 1:
-        GPIO.output(12, GPIO.HIGH)
-    elif direction == 2:
+    elif direction == 1:  # North-East
+        GPIO.output(11, GPIO.HIGH)
+    elif direction == 2:  # East
         GPIO.output(16, GPIO.HIGH)
-    elif direction == 3:
+    elif direction == 3:  # South-East
         GPIO.output(18, GPIO.HIGH)
-    elif direction == 4:
+    elif direction == 4:  # South
         GPIO.output(22, GPIO.HIGH)
-    elif direction == 5:
+    elif direction == 5:  # South-West
         GPIO.output(24, GPIO.HIGH)
-    elif direction == 6:
+    elif direction == 6:  # West
         GPIO.output(26, GPIO.HIGH)
-    elif direction == 7:
+    elif direction == 7:  # North-West
         GPIO.output(5, GPIO.HIGH)
 
 
-def set_wind_speed(speed):
-    # take speed and divide by 100. Times result by total time in one iteration
-    # one iteration should last 0.01 seconds
-    ontime = (speed / 100) * 0.01
-    offtime = 0.01 - ontime
-    for i in range(5000):
-        GPIO.output(11, GPIO.HIGH)
-        sleep(ontime)
-        GPIO.output(11, GPIO.LOW)
-        sleep(offtime)
-
+pwm = GPIO.PWM(12, 100)
+pwm.start(0)
 setup_pins()
 
 while True:
     wind = get_wind()
     set_wind_direction(wind[1])
-    set_wind_speed(wind[0])
+    pwm.ChangeDutyCycle(wind[0])
+    sleep(60)
