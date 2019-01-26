@@ -93,6 +93,8 @@ def set_wind_speed(speed):
         GPIO.output(32, GPIO.LOW)
         sleep(offtime)
 
+setup_pins()
+
 while True:
     wind = get_wind()
     set_wind_direction(wind[1])
