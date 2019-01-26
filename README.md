@@ -11,6 +11,13 @@ Any lines after that will be ignored
 
 ## Raspberry Pi Setup ##
 
+Run the following commands on your Pi
+
+```
+sudo apt-get install git python-pip
+pip install requests
+```
+
 With GPIO pins facing upward and on the right:
 
 ```
