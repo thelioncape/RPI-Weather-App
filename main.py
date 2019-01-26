@@ -33,13 +33,13 @@ def get_weather():
 
     requesturl = url + "id=" + id + "&APPID=" + appid
     try:
-        response = requests.get(requesturl).text
+        response = requests.get(requesturl).json
     except Exception as e:
         print(e)
         input("Press enter to exit")
         exit()
 
-    return json.load(response)
+    return json.loads(response)
 
 
 def get_wind():
