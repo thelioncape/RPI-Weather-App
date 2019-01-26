@@ -1,4 +1,4 @@
-import urllib.request
+import requests
 import json
 from time import sleep
 import RPi.GPIO as GPIO
@@ -33,7 +33,7 @@ def get_weather():
 
     requesturl = url + "id=" + id + "&APPID=" + appid
     try:
-        response = urllib.request.urlopen(requesturl)
+        response = requests.get(requesturl).text
     except Exception as e:
         print(e)
         input("Press enter to exit")
