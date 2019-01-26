@@ -15,7 +15,7 @@ Run the following commands on your Pi
 
 ```
 sudo apt-get install git python-pip
-pip install requests
+sudo pip install requests
 ```
 
 With GPIO pins facing upward and on the right:
