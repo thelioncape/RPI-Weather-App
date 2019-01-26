@@ -15,7 +15,8 @@ def setup_pins():
     GPIO.setup(22, GPIO.OUT)  # South LED
     GPIO.setup(24, GPIO.OUT)  # South-West LED
     GPIO.setup(26, GPIO.OUT)  # West LED
-    GPIO.setup(28, GPIO.OUT)  # North-West LED
+    GPIO.setup(5, GPIO.OUT)   # North-West LED
+    GPIO.setup(11, GPIO.OUT)  # VU Out
 
 
 def round_to_compass_point(number):
