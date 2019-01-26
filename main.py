@@ -87,8 +87,14 @@ pwm = GPIO.PWM(12, 100)
 pwm.start(0)
 setup_pins()
 
-while True:
-    wind = get_wind()
-    set_wind_direction(wind[1])
-    pwm.ChangeDutyCycle(wind[0])
-    sleep(60)
+try:
+    while True:
+        wind = get_wind()
+        set_wind_direction(wind[1])
+        pwm.ChangeDutyCycle(wind[0])
+        sleep(60)
+except KeyboardInterrupt:
+    print("Ctrl-C Pressed. Exiting...")
+
+pwm.stop()
+GPIO.cleanup()
