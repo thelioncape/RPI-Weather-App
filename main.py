@@ -82,10 +82,9 @@ def set_wind_direction(direction):
     elif direction == 7:  # North-West
         GPIO.output(5, GPIO.HIGH)
 
-
+setup_pins()
 pwm = GPIO.PWM(12, 100)
 pwm.start(0)
-setup_pins()
 
 try:
     while True:
