@@ -20,7 +20,7 @@ def setup_pins():
 
 
 def round_to_compass_point(number):
-    # Take degrees, devide by 45 and ronud to find direction in number
+    # Take degrees, divide by 45 and ronud to find direction in number
     # 0 is North and clockwise until 7 is North-West
     return round(int(number) / 45)
 
